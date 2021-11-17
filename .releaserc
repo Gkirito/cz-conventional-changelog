@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    [
+      "semantic-release-gitmoji",
+      {
+        "releaseRules": {
+          "patch": {
+            "include": [
+              "🌟"
+            ]
+          }
+        }
+      }
+    ]
+  ]
+}
