@@ -13,7 +13,7 @@ var filter = function(array) {
 
 var headerLength = function(answers) {
   return (
-    answers.type.length + 4 + (answers.scope ? answers.scope.length + 2 : 0)
+    answers.type.length + 5 + (answers.scope ? answers.scope.length + 2 : 0)
   );
 };
 
@@ -42,11 +42,11 @@ var filterSubject = function(subject, disableSubjectLowerCase) {
 module.exports = function(options) {
   var types = options.types;
 
-  var length = longest(Object.keys(types)).length + 4;
+  var length = longest(Object.keys(types)).length + 5;
   var choices = map(types, function(type, key) {
     return {
       name:
-        (options.emoji.types[key].emoji + key + ':').padEnd(length) +
+        (options.emoji.types[key].emoji + ' ' + key + ':').padEnd(length) +
         ' ' +
         type.description,
       value: key
@@ -214,7 +214,7 @@ module.exports = function(options) {
         var emoji = options.emoji.types[answers.type].emoji;
 
         // Hard limit this line in the validate
-        var head = emoji + answers.type + scope + ': ' + answers.subject;
+        var head = emoji + ' ' + answers.type + scope + ': ' + answers.subject;
 
         // Wrap these lines at options.maxLineWidth characters
         var body = answers.body ? wrap(answers.body, wrapOptions) : false;
