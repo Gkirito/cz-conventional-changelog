@@ -9,16 +9,16 @@
     "format": "prettier --write *.js",
     "semantic-release": "semantic-release"
   },
-  "homepage": "https://github.com/commitizen/cz-conventional-changelog",
+  "homepage": "https://github.com/Gkirito/cz-conventional-changelog",
   "repository": {
     "type": "git",
-    "url": "https://github.com/commitizen/cz-conventional-changelog.git"
+    "url": "https://github.com/Gkirito/cz-conventional-changelog.git"
   },
   "engineStrict": true,
   "engines": {
     "node": ">= 10"
   },
-  "author": "Jim Cummins <jimthedev@gmail.com>",
+  "author": "Gkirito <gujkirito@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.1",

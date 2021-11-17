@@ -3,6 +3,7 @@
 var engine = require('./engine');
 var conventionalCommitTypes = require('conventional-commit-types');
 var configLoader = require('commitizen').configLoader;
+var emoji = require('./types-emoji');
 
 var config = configLoader.load() || {};
 var options = {
@@ -25,7 +26,8 @@ var options = {
     (process.env.CZ_MAX_LINE_WIDTH &&
       parseInt(process.env.CZ_MAX_LINE_WIDTH)) ||
     config.maxLineWidth ||
-    100
+    100,
+  emoji
 };
 
 (function(options) {

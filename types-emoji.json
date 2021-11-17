@@ -1,0 +1,37 @@
+{
+  "types": {
+    "feat": {
+      "emoji": "🌟"
+    },
+    "fix": {
+      "emoji": "🐛"
+    },
+    "docs": {
+      "emoji": "📖"
+    },
+    "style": {
+      "emoji": "🎨"
+    },
+    "refactor": {
+      "emoji": "🔨"
+    },
+    "perf": {
+      "emoji": "⚡️"
+    },
+    "test": {
+      "emoji": "🧪"
+    },
+    "build": {
+      "emoji": "📦"
+    },
+    "ci": {
+      "emoji": "👷"
+    },
+    "chore": {
+      "emoji": "🔧"
+    },
+    "revert": {
+      "emoji": "🔙"
+    }
+  }
+}

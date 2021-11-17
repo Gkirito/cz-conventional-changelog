@@ -13,7 +13,7 @@ var filter = function(array) {
 
 var headerLength = function(answers) {
   return (
-    answers.type.length + 2 + (answers.scope ? answers.scope.length + 2 : 0)
+    answers.type.length + 4 + (answers.scope ? answers.scope.length + 2 : 0)
   );
 };
 
@@ -23,7 +23,10 @@ var maxSummaryLength = function(options, answers) {
 
 var filterSubject = function(subject, disableSubjectLowerCase) {
   subject = subject.trim();
-  if (!disableSubjectLowerCase && subject.charAt(0).toLowerCase() !== subject.charAt(0)) {
+  if (
+    !disableSubjectLowerCase &&
+    subject.charAt(0).toLowerCase() !== subject.charAt(0)
+  ) {
     subject =
       subject.charAt(0).toLowerCase() + subject.slice(1, subject.length);
   }
@@ -39,10 +42,13 @@ var filterSubject = function(subject, disableSubjectLowerCase) {
 module.exports = function(options) {
   var types = options.types;
 
-  var length = longest(Object.keys(types)).length + 1;
+  var length = longest(Object.keys(types)).length + 4;
   var choices = map(types, function(type, key) {
     return {
-      name: (key + ':').padEnd(length) + ' ' + type.description,
+      name:
+        (options.emoji.types[key].emoji + key + ':').padEnd(length) +
+        ' ' +
+        type.description,
       value: key
     };
   });
@@ -99,7 +105,10 @@ module.exports = function(options) {
           },
           default: options.defaultSubject,
           validate: function(subject, answers) {
-            var filteredSubject = filterSubject(subject, options.disableSubjectLowerCase);
+            var filteredSubject = filterSubject(
+              subject,
+              options.disableSubjectLowerCase
+            );
             return filteredSubject.length == 0
               ? 'subject is required'
               : filteredSubject.length <= maxSummaryLength(options, answers)
@@ -111,7 +120,10 @@ module.exports = function(options) {
                 ' characters.';
           },
           transformer: function(subject, answers) {
-            var filteredSubject = filterSubject(subject, options.disableSubjectLowerCase);
+            var filteredSubject = filterSubject(
+              subject,
+              options.disableSubjectLowerCase
+            );
             var color =
               filteredSubject.length <= maxSummaryLength(options, answers)
                 ? chalk.green
@@ -199,8 +211,10 @@ module.exports = function(options) {
         // parentheses are only needed when a scope is present
         var scope = answers.scope ? '(' + answers.scope + ')' : '';
 
+        var emoji = options.emoji.types[answers.type].emoji;
+
         // Hard limit this line in the validate
-        var head = answers.type + scope + ': ' + answers.subject;
+        var head = emoji + answers.type + scope + ': ' + answers.subject;
 
         // Wrap these lines at options.maxLineWidth characters
         var body = answers.body ? wrap(answers.body, wrapOptions) : false;
