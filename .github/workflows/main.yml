@@ -28,6 +28,11 @@ jobs:
       - name: Action For Semantic Release
         uses: cycjimmy/semantic-release-action@v2.6.0
         with:
+          extra_plugins: |
+            semantic-release-gitmoji
+            @semantic-release/release-notes-generator
+            @semantic-release/npm
+            @semantic-release/github
           branch: master
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
