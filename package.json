@@ -1,6 +1,6 @@
 {
-  "name": "@gkirito/cz-conventional-changelog-emoji",
-  "version": "3.3.1",
+  "name": "cz-conventional-changelog-emoji-gkirito",
+  "version": "3.3.2",
   "description": "Commitizen adapter following the conventional-changelog format.",
   "main": "index.js",
   "scripts": {
